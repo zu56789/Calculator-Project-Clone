@@ -35,8 +35,8 @@ public class Stack {
    * @param i the value to add.
    */
   public void push(int i) {
-    value.add(i); // adds the i value to the stack
-    size += 1; // size increases by one when one value is added
+    value.add(i);
+    size += 1; // size increases by one because value is added
 
   }
 
@@ -50,8 +50,8 @@ public class Stack {
       throw new EmptyStackException(); // throw an exception if the stack is empty
     }
     size -= 1; // size decreases when a value is popped
-    int topvalue = value.get(size); // represents the popped value
-    value.remove(size); // removes the value at the top of the stack
+    int topvalue = value.get(size); 
+    value.remove(size); 
     return topvalue;
 
   }
