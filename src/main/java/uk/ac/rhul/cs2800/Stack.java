@@ -14,11 +14,11 @@ public class Stack {
   /**
    * the size of the stack.
    */
-  int size = 0;
+  private int size = 0;
   /**
    * The list representing the stack.
    */
-  ArrayList<Integer> value = new ArrayList<Integer>();
+  private ArrayList<Entry> entries = new ArrayList<Entry>();
 
   /**
    * this method returns the size of the stack.
@@ -34,8 +34,8 @@ public class Stack {
 
    * @param i the value to add.
    */
-  public void push(int i) {
-    value.add(i);
+  public void push(Entry i) {
+    entries.add(i);
     size += 1; // size increases by one because value is added
 
   }
@@ -45,13 +45,13 @@ public class Stack {
 
    * @return returns the removed value in the stack.
    */
-  public int pop() {
+  public Entry pop() {
     if (size == 0) {
       throw new EmptyStackException(); // throw an exception if the stack is empty
     }
     size -= 1; // size decreases when a value is popped
-    int topvalue = value.get(size); 
-    value.remove(size); 
+    Entry topvalue = entries.get(size); 
+    entries.remove(size); 
     return topvalue;
 
   }
@@ -61,11 +61,11 @@ public class Stack {
 
    * @return returns the top value of the stack.
    */
-  public int top() {
+  public Entry top() {
     if (size == 0) {
       throw new EmptyStackException(); // throw an exception if the stack is empty
     }
-    return value.get(size - 1);
+    return entries.get(size - 1);
   }
 
 }

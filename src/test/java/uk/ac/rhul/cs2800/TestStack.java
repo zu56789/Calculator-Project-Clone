@@ -29,7 +29,8 @@ class TestStack {
   @Test
   void testPush() { // Test 3. Testing that pushing to an empty stack makes the size increase to 1.
     // I added a push method that increased the size variable by one.
-    newstack.push(8);
+    Entry testEntry = new Entry(2);
+    newstack.push(testEntry);
     assertEquals(newstack.size(), 1, "Test that pushing increases the size of the stack");
   }
 
@@ -47,8 +48,9 @@ class TestStack {
     // added a value integer variable which contained the current value in the
     // stack and then returned that value. I also changed the push method to
     // make the pushed value the current value.
-    newstack.push(8);
-    assertEquals(newstack.pop(), 8, "Pushing an 8 and then popping should return an 8");
+    Entry testEntry2 = new Entry(Symbol.DIVIDE);
+    newstack.push(testEntry2);
+    assertEquals(newstack.pop(), testEntry2, "Push an entry and popping should return the entry");
     assertEquals(newstack.size(), 0,
         "Pushing an 8 and then popping the 8 should make the stack empty");
     assertThrows(EmptyStackException.class, () -> newstack.pop(),
@@ -61,11 +63,13 @@ class TestStack {
     // integer variable into an integer arraylist to allow both values to be
     // popped correctly. I had to slightly change the push and pop methods to
     // suit the syntax for an arraylist.
-    newstack.push(10);
-    newstack.push(11);
-    assertEquals(newstack.pop(), 11,
+    Entry testEntry3 = new Entry(10);
+    Entry testEntry4 = new Entry(11);
+    newstack.push(testEntry3);
+    newstack.push(testEntry4);
+    assertEquals(newstack.pop(), testEntry4,
         "Pushing two times and then popping will return the second thing pushed");
-    assertEquals(newstack.pop(), 10,
+    assertEquals(newstack.pop(), testEntry3,
         "Pushing two times and then popping twice will return the first thing pushed");
     assertEquals(newstack.size(), 0,
         "Pushing two times and then popping two times should empty the stack");
@@ -77,23 +81,25 @@ class TestStack {
   void testMultiplePush() { // Test 7. Testing that pushing multiple values onto the stack will
     // correctly increase the size of the stack. The stack should allow an
     // infinite amount of entries.
+    Entry testEntry5 = new Entry(0);
     for (int i = 0; i < 5000; i++) {
-      newstack.push(i + 10);
-      assertEquals(newstack.size, i + 1, "Pushing should increase the size");
+      newstack.push(testEntry5);
+      assertEquals(newstack.size(), i + 1, "Pushing should increase the size");
     }
   }
 
   @Test
   void testMultiplePushAndPop() { // Test 7. Testing that pushing multiple values and then popping
     // multiple values will correctly display the stack size.
+    Entry testEntry6 = new Entry(78);
     int size = 100;
     for (int i = 0; i < size; i++) {
-      newstack.push(i + 23);
+      newstack.push(testEntry6);
     }
     for (int i = 1; i < 100; i++) {
       newstack.pop();
       size -= 1;
-      assertEquals(newstack.size, (size + 1) - 1, "Popping will reduce the size by one");
+      assertEquals(newstack.size(), (size + 1) - 1, "Popping will reduce the size by one");
     }
   }
 
@@ -107,18 +113,19 @@ class TestStack {
   }
 
   @Test
-  void testPushAndTop() { // Test 9. Testing that push will work when a value is pushed onto the
-    // stack. I changed the return integer from 0 to the value at the top of
-    // the stack.
-    newstack.push(12);
-    assertEquals(newstack.top(), 12,
+  void testPushAndTop() { // Test 9. Testing that top will work when a value is pushed onto the
+    // stack.
+    Entry testEntry7 = new Entry(788);
+    newstack.push(testEntry7);
+    assertEquals(newstack.top(), testEntry7,
         "Pushing and then getting the top value should return the pushed value");
   }
 
   @Test
   void testPushPopandTop() { // Test 10. Testing that pushing, popping and then trying to use the
     // top function will throw an exception.
-    newstack.push(12);
+    Entry testEntry8 = new Entry(77328327);
+    newstack.push(testEntry8);
     newstack.pop();
     assertThrows(EmptyStackException.class, () -> newstack.top(),
         "Push and then pop will empty the stack so there should be an empty stack exception");
