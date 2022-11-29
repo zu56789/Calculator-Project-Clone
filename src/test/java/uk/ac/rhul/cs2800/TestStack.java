@@ -52,7 +52,7 @@ class TestStack {
     newstack.push(testEntry2);
     assertEquals(newstack.pop(), testEntry2, "Push an entry and popping should return the entry");
     assertEquals(newstack.size(), 0,
-        "Pushing an 8 and then popping the 8 should make the stack empty");
+        "Pushing a divide symbol and then popping should make the stack empty");
     assertThrows(EmptyStackException.class, () -> newstack.pop(),
         "Popping the now empty stack will throw an exception");
   }
