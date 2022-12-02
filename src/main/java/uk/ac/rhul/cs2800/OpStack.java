@@ -14,4 +14,9 @@ public class OpStack {
   public int size() {
     return size;
   }
+  
+  public Symbol pop() throws Exception {
+    size -= 1;
+    return opStack.pop().getSymbol();
+  }
 }
