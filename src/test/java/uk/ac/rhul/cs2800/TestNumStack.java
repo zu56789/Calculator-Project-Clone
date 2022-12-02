@@ -28,5 +28,13 @@ class TestNumStack {
         "An empty stack can not be popped");
     
   }
+  
+  @Test
+  void testPushandPop() throws Exception {
+    newNumStack.push((float) 3.0);
+    assertEquals(newNumStack.pop(), 3.0);
+    assertEquals(newNumStack.size(), 0);
+    
+  }
 
 }

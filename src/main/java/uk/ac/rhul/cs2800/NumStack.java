@@ -1,5 +1,6 @@
 package uk.ac.rhul.cs2800;
 
+import java.util.EmptyStackException;
 
 public class NumStack {
   
@@ -16,8 +17,10 @@ public class NumStack {
     return size;
   }
   
-  public float pop() throws Exception {
+  public float pop() throws  Exception {
+    size -= 1;
     return numStack.pop().getValue();
+    
     
   }
     
