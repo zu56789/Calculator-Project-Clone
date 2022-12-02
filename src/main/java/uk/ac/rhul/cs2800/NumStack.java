@@ -42,7 +42,7 @@ public class NumStack {
 
    * @return returns the removed value in the NumStack.
 
-   * @throws Exception throws an EmptyStackException if you call pop when size is 0.
+   * @throws when there is an empty stack exception.
    */
   public float pop() throws  Exception {
     size -= 1;
