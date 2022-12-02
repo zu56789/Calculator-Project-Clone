@@ -36,5 +36,10 @@ class TestNumStack {
     assertEquals(newNumStack.size(), 0);
     
   }
+  
+  @Test
+  void testifEmpty() {
+    assertEquals(newNumStack.isEmpty(), true);
+  }
 
 }
