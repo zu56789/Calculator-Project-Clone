@@ -17,7 +17,7 @@ class TestNumStack {
   @Test
   void testPush() {
     NumStack newNumStack = new NumStack();
-    newNumStack.push(2.0);
+    newNumStack.push((float) 2.0);
     assertEquals(newNumStack.size(), 1);
   }
 
