@@ -15,6 +15,11 @@ public class NumStack {
   public int size() {
     return size;
   }
+  
+  public float pop() throws Exception {
+    return numStack.pop().getValue();
+    
+  }
     
 }
 
