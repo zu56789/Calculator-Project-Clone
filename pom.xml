@@ -4,7 +4,7 @@
   <artifactId>zkac412cw</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>cs2800 coursework</name>
-  <description>A Stack that has full functionality according to the specification</description>
+  <description>Calculator Project</description>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
