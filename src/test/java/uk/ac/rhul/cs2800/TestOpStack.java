@@ -34,5 +34,24 @@ class TestOpStack {
     assertEquals(newOpStack.size(), 0);
     
   }
+  
+  @Test
+  void testEmptyTop()  {
+    assertThrows(EmptyStackException.class, () -> newOpStack.top());
+  }
+  
+  @Test
+  void testPushandTop() throws Exception {
+    newOpStack.push(Symbol.MINUS);
+    assertEquals(newOpStack.top(), Symbol.MINUS);
+    
+  }
+  
+  @Test
+  void testPushPopandTop() throws Exception {
+    newOpStack.push(Symbol.INVALID);
+    newOpStack.pop();
+    assertThrows(EmptyStackException.class, () -> newOpStack.top());
+  }
 
 }

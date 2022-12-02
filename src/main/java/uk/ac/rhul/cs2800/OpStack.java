@@ -1,5 +1,7 @@
 package uk.ac.rhul.cs2800;
 
+import java.util.EmptyStackException;
+
 public class OpStack {
   
   private Stack opStack = new Stack();
@@ -18,5 +20,13 @@ public class OpStack {
   public Symbol pop() throws Exception {
     size -= 1;
     return opStack.pop().getSymbol();
+  }
+  
+  public Symbol top() throws Exception  {
+    if (size == 0) {
+      throw new EmptyStackException();
+    }
+    
+    return opStack.top().getSymbol();
   }
 }
