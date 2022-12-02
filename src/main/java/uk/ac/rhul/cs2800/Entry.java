@@ -65,7 +65,6 @@ public class Entry {
 
    * @return returns the type of the entry.
  
-   * @throws when the types do not match.
    */
   public Type getType() throws Exception {
     return type;
@@ -76,7 +75,6 @@ public class Entry {
 
    * @return returns the string passed into the entry object.
 
-   * @throws when the types do not match.
    */
   public String getString() throws Exception {
     return str; 
@@ -87,7 +85,6 @@ public class Entry {
 
    * @return returns the symbol passed into the entry.
 
-   * @throws when the types do not match.
    */
   public Symbol getSymbol() throws Exception {
     return other;
@@ -98,7 +95,6 @@ public class Entry {
 
    * @return returns the float value passed into the entry.
 
-   * @throws when the types do not match.
    */
   public float getValue() throws Exception {
     return number;

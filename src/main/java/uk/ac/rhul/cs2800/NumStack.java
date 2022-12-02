@@ -41,8 +41,6 @@ public class NumStack {
    * this method removes the value at the top of the NumStack and returns it.
 
    * @return returns the removed value in the NumStack.
-
-   * @throws when there is an empty stack exception.
    */
   public float pop() throws  Exception {
     size -= 1;
