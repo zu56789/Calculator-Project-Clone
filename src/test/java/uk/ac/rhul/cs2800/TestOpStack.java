@@ -1,6 +1,7 @@
 package uk.ac.rhul.cs2800;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EmptyStackException;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,5 +54,20 @@ class TestOpStack {
     newOpStack.pop();
     assertThrows(EmptyStackException.class, () -> newOpStack.top());
   }
+  
+  @Test
+  void testisEmpty() {
+    assertEquals(newOpStack.isEmpty(), true);
+  }
+  
+  @Test
+  void testPushandisEmpty() throws Exception {
+    newOpStack.push(Symbol.TIMES);
+    assertEquals(newOpStack.isEmpty(), false);
+    newOpStack.pop();
+    assertEquals(newOpStack.isEmpty(), true);
+  }
+  
+  
 
 }

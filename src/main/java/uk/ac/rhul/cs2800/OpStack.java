@@ -29,4 +29,8 @@ public class OpStack {
     
     return opStack.top().getSymbol();
   }
+  
+  public boolean isEmpty() {
+    return (size == 0);
+  }
 }
