@@ -19,4 +19,8 @@ public class StrStack {
     return strStack.pop().getString();
   }
   
+  public boolean isEmpty() {
+    return (size == 0);
+  }
+  
 }

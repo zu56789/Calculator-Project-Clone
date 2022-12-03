@@ -32,5 +32,16 @@ class TestStrStack {
     assertEquals(newStrStack.pop(), "Hello mate");
     assertEquals(newStrStack.size(), 0);
   }
+  
+  @Test
+  void testisEmpty() {
+    assertEquals(newStrStack.isEmpty(), true);
+  }
+  
+  @Test
+  void testPushandisEmpty() {
+    newStrStack.push("Hello");
+    assertEquals(newStrStack.isEmpty(), false);
+  }
 
 }
