@@ -2,6 +2,7 @@ package uk.ac.rhul.cs2800;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.EmptyStackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,18 @@ class TestStrStack {
   void testPush() {
     newStrStack.push("Hello");
     assertEquals(newStrStack.size(), 1);
+  }
+  
+  @Test
+  void testEmptyPop() {
+    assertThrows(EmptyStackException.class, () -> newStrStack.pop());
+  }
+  
+  @Test
+  void testPushandPop() throws Exception {
+    newStrStack.push("Hello mate");
+    assertEquals(newStrStack.pop(), "Hello mate");
+    assertEquals(newStrStack.size(), 0);
   }
 
 }

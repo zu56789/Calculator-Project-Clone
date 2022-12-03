@@ -14,4 +14,9 @@ public class StrStack {
     return size;
   }
   
+  public String pop() throws Exception {
+    size -= 1;
+    return strStack.pop().getString();
+  }
+  
 }
