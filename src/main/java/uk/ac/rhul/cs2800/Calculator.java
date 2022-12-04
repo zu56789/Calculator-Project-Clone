@@ -15,5 +15,5 @@ public interface Calculator {
 
    * @return returns a float representing the answer to the expression.
    */
-  public float evaluate(String expression);
+  public float evaluate(String expression) throws Exception;
 }
