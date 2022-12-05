@@ -38,5 +38,10 @@ class TestStandardCalc {
   void testInvalidExpression4() {
     assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("5"));
   }
+  
+  @Test
+  void testoutput() {
+    assertEquals(newStandardCalc.infixtoRpn("5 5 5"), "5 5 5");
+  }
 
 }
