@@ -54,5 +54,10 @@ class TestRevPolishCalc {
     assertEquals(rpnCalc.evaluate("5 5 *"), 25);
   }
   
+  @Test
+  void testDivide() throws Exception {
+    assertEquals(rpnCalc.evaluate("10 5 /"), 2);
+  }
+  
 
 }
