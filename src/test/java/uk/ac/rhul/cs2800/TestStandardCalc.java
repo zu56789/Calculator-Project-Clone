@@ -60,5 +60,15 @@ class TestStandardCalc {
     assertEquals(newStandardCalc.getPrecedence("*"), 2);
     assertEquals(newStandardCalc.getPrecedence("/"), 2);
   }
+  
+  @Test
+  void testoutput3() throws Exception {
+    assertEquals(newStandardCalc.infixtoRpn("( 5 * ( 6 + 7 ) ) - 2"), "5 6 7 + * 2 -");
+  }
+  
+  @Test
+  void testoutput4() throws Exception {
+    assertEquals(newStandardCalc.infixtoRpn("( 5 + 6 ) + ( 7 * 4 )"), "5 6 + 7 4 * +");
+  }
 
 }
