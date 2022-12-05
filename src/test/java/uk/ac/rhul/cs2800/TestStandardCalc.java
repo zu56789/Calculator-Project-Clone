@@ -16,7 +16,7 @@ class TestStandardCalc {
   
   @Test
   void testinfixtoRpn() {
-    assertEquals(newStandardCalc.infixtoRpn(""), "");
+    assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn(""));
   }
   
   @Test
@@ -32,6 +32,11 @@ class TestStandardCalc {
   @Test
   void testInvalidExpression3() {
     assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("5 + 5;"));
+  }
+  
+  @Test
+  void testInvalidExpression4() {
+    assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("5"));
   }
 
 }

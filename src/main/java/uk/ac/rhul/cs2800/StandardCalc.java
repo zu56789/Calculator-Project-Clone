@@ -11,6 +11,10 @@ public class StandardCalc implements Calculator {
   
     public String infixtoRpn(String expression) {
     
+      
+    String output = new String("");
+    int countdigits = 0;
+      
     symbolMap.put(Symbol.LEFT_BRACKET, "(");
     symbolMap.put(Symbol.RIGHT_BRACKET, ")");
     symbolMap.put(Symbol.PLUS, "+");
@@ -20,12 +24,21 @@ public class StandardCalc implements Calculator {
     Scanner scan = new Scanner(expression);
     while (scan.hasNext()) {
       String value = scan.next();
-      if (!symbolMap.containsValue(value) || value.matches("^[0-9]*$")) {
+      if (symbolMap.containsValue(value) || value.matches("^[0-9]*$")) {
+        if (value.matches("^[0-9]*$")) {
+          output = output + " " + value;
+          countdigits++;
+        }
+      } else {
         throw new IllegalArgumentException("Invalid Expression");
       }
     }
     
-    return "";
+    if (countdigits <= 1) {
+      throw new IllegalArgumentException("Invalid Expression");
+    }
+    scan.close();
+    return output.trim();
   }
   
   @Override
@@ -35,3 +48,4 @@ public class StandardCalc implements Calculator {
   }
 
 }
+
