@@ -64,5 +64,4 @@ class TestRevPolishCalc {
     assertThrows(ArithmeticException.class, () -> rpnCalc.evaluate("0 9 /"));
   }
   
-
 }
