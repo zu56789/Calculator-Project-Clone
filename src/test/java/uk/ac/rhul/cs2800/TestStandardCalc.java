@@ -40,8 +40,13 @@ class TestStandardCalc {
   }
   
   @Test
-  void testoutput() {
+  void testoutput() throws Exception {
     assertEquals(newStandardCalc.infixtoRpn("5 5 5"), "5 5 5");
+  }
+  
+  @Test
+  void testoutput2() throws Exception {
+    assertEquals(newStandardCalc.infixtoRpn("( 5  5 )"), "5 5");
   }
 
 }

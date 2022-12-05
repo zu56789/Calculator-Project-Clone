@@ -6,28 +6,42 @@ import java.util.Scanner;
 public class StandardCalc implements Calculator {
 
   private OpStack values = new OpStack();
-  private RevPolishCalc rpnCalc;
-  private HashMap<Symbol, String> symbolMap = new HashMap<Symbol, String>();
+  private RevPolishCalc rpnCalc = new RevPolishCalc();
+  private HashMap<Symbol, String> operatorMap = new HashMap<Symbol, String>();
+  private HashMap<Symbol, String> bracketsMap = new HashMap<Symbol, String>();
   
-    public String infixtoRpn(String expression) {
+  
+    public String infixtoRpn(String expression) throws Exception {
     
       
     String output = new String("");
     int countdigits = 0;
       
-    symbolMap.put(Symbol.LEFT_BRACKET, "(");
-    symbolMap.put(Symbol.RIGHT_BRACKET, ")");
-    symbolMap.put(Symbol.PLUS, "+");
-    symbolMap.put(Symbol.MINUS, "-");
-    symbolMap.put(Symbol.TIMES, "*");
-    symbolMap.put(Symbol.DIVIDE, "/");
+    bracketsMap.put(Symbol.LEFT_BRACKET, "(");
+    bracketsMap.put(Symbol.RIGHT_BRACKET, ")");
+    
+    operatorMap.put(Symbol.PLUS, "+");
+    operatorMap.put(Symbol.MINUS, "-");
+    operatorMap.put(Symbol.TIMES, "*");
+    operatorMap.put(Symbol.DIVIDE, "/");
     Scanner scan = new Scanner(expression);
     while (scan.hasNext()) {
       String value = scan.next();
-      if (symbolMap.containsValue(value) || value.matches("^[0-9]*$")) {
+      if (operatorMap.containsValue(value) || value.matches("^[0-9]*$")
+          || bracketsMap.containsValue(value)) {
         if (value.matches("^[0-9]*$")) {
           output = output + " " + value;
           countdigits++;
+        }   else if (bracketsMap.containsValue(value)) {
+          if (value.equals(bracketsMap.get(Symbol.LEFT_BRACKET))) {
+            values.push(Symbol.LEFT_BRACKET);
+          } else {
+            while (!values.isEmpty() && values.top() != Symbol.LEFT_BRACKET) {
+              output = output + " " + operatorMap.get(values.pop());
+              countdigits += 1;
+            }
+            bracketsMap.get(values.pop());
+          }
         }
       } else {
         throw new IllegalArgumentException("Invalid Expression");
