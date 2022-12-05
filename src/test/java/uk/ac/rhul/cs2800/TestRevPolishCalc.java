@@ -21,8 +21,18 @@ class TestRevPolishCalc {
   }
   
   @Test
-  void testInvalidExpression() throws Exception{
+  void testInvalidExpression1() throws Exception {
     assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("4+32+"));
+  }
+  
+  @Test
+  void testInvalidExpression2() throws Exception {
+    assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("2f 4 +"));
+  }
+  
+  @Test
+  void testInvalidExpression3() throws Exception {
+    assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("6 5 ;"));
   }
   
   
