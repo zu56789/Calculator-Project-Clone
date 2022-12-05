@@ -34,6 +34,10 @@ public class RevPolishCalc implements Calculator {
         throw new IllegalArgumentException("Invalid Expression");
         
       }
+      
+      float a = values.pop();
+      float b = values.pop();
+      
      
     }
     scan.close();
