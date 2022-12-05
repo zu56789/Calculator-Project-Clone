@@ -11,6 +11,15 @@ public class StandardCalc implements Calculator {
   private HashMap<Symbol, String> bracketsMap = new HashMap<Symbol, String>();
   
   
+  public int getPrecedence(String operator) {
+    if (operator == "*" || operator == "/") {
+      return 2;
+    }   else {
+      return 1;
+    }
+  }
+  
+  
     public String infixtoRpn(String expression) throws Exception {
     
       

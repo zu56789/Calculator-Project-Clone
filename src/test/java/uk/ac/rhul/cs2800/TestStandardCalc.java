@@ -48,5 +48,17 @@ class TestStandardCalc {
   void testoutput2() throws Exception {
     assertEquals(newStandardCalc.infixtoRpn("( 5  5 )"), "5 5");
   }
+  
+  @Test
+  void testgetPrecedenceAddorSubtract() {
+    assertEquals(newStandardCalc.getPrecedence("+"), 1);
+    assertEquals(newStandardCalc.getPrecedence("-"), 1);
+  }
+  
+  @Test
+  void testgetPrecedenceTimesorDivide() {
+    assertEquals(newStandardCalc.getPrecedence("*"), 2);
+    assertEquals(newStandardCalc.getPrecedence("/"), 2);
+  }
 
 }
