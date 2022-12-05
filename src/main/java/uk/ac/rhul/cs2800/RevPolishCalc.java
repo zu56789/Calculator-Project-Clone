@@ -1,5 +1,6 @@
 package uk.ac.rhul.cs2800;
 
+
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -38,6 +39,7 @@ public class RevPolishCalc implements Calculator {
       float a = values.pop();
       float b = values.pop();
       
+      
       if (value.equals(operatorMap.get(Symbol.PLUS))) {
         values.push(a + b); 
         
@@ -46,6 +48,10 @@ public class RevPolishCalc implements Calculator {
       } else if (value.equals(operatorMap.get(Symbol.TIMES))) {
         values.push(a * b);
       } else if (value.equals(operatorMap.get(Symbol.DIVIDE))) {
+        
+        if (a == 0 || b == 0) {
+          throw new ArithmeticException("Cannot Divide by 0");
+        }
         values.push(b / a);
       }
      
