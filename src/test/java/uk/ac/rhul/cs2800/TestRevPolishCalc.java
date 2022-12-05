@@ -49,5 +49,10 @@ class TestRevPolishCalc {
     assertEquals(rpnCalc.evaluate("5 5 -"), 0);
   }
   
+  @Test
+  void testMultiply() throws Exception {
+    assertEquals(rpnCalc.evaluate("5 5 *"), 25);
+  }
+  
 
 }

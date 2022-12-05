@@ -43,6 +43,8 @@ public class RevPolishCalc implements Calculator {
         
       } else if (value.equals(operatorMap.get(Symbol.MINUS))) {
         values.push(b - a);
+      } else if (value.equals(operatorMap.get(Symbol.TIMES))) {
+        values.push(a * b);
       }
      
     }
