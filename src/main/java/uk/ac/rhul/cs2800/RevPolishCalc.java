@@ -19,8 +19,20 @@ public class RevPolishCalc implements Calculator {
     Scanner scan = new Scanner(expression);
     while (scan.hasNext()) {
       String value = scan.next();
-      if (!operatorMap.containsValue(value) || value.matches("^[0-9]*$")) {
+      if (operatorMap.containsValue(value) || value.matches("^[0-9]*$")) {
+        
+        if (!operatorMap.containsValue(value)) {
+          values.push(Float.valueOf(value));
+          continue;
+        }
+        
+        if (values.size() < 2) {
+          throw new IllegalArgumentException("Invalid Expression");
+        }
+        
+      } else {
         throw new IllegalArgumentException("Invalid Expression");
+        
       }
      
     }

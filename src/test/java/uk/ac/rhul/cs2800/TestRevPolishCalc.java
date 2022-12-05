@@ -35,6 +35,11 @@ class TestRevPolishCalc {
     assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("6 5 ;"));
   }
   
+  @Test
+  void testInvalidExpression4() throws Exception {
+    assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("5 +"));
+  }
+  
   
 
 }
