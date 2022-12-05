@@ -38,10 +38,14 @@ public class RevPolishCalc implements Calculator {
       float a = values.pop();
       float b = values.pop();
       
+      if (value.equals(operatorMap.get(Symbol.PLUS))) {
+        values.push(a + b); 
+        
+      }
      
     }
     scan.close();
-    return 0;
+    return values.pop();
    
     
     

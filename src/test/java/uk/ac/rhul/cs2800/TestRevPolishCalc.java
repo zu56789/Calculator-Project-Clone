@@ -14,12 +14,6 @@ class TestRevPolishCalc {
     rpnCalc = new RevPolishCalc();
   }
   
-  
-  @Test
-  void testEvaluate() throws Exception {
-    assertEquals(rpnCalc.evaluate(""), 0);
-  }
-  
   @Test
   void testInvalidExpression1() throws Exception {
     assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("4+32+"));
@@ -43,6 +37,11 @@ class TestRevPolishCalc {
   @Test
   void testInvalidExpression5() throws Exception {
     assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("5 5 + +"));
+  }
+  
+  @Test
+  void testAdd() throws Exception {
+    assertEquals(rpnCalc.evaluate("5 5 +"), 10);
   }
   
   
