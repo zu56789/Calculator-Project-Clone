@@ -41,6 +41,8 @@ public class RevPolishCalc implements Calculator {
       if (value.equals(operatorMap.get(Symbol.PLUS))) {
         values.push(a + b); 
         
+      } else if (value.equals(operatorMap.get(Symbol.MINUS))) {
+        values.push(b - a);
       }
      
     }

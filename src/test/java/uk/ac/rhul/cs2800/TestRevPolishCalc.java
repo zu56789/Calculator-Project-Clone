@@ -44,6 +44,10 @@ class TestRevPolishCalc {
     assertEquals(rpnCalc.evaluate("5 5 +"), 10);
   }
   
+  @Test
+  void testMinus() throws Exception {
+    assertEquals(rpnCalc.evaluate("5 5 -"), 0);
+  }
   
 
 }
