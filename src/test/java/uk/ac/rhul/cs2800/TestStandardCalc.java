@@ -70,5 +70,11 @@ class TestStandardCalc {
   void testoutput4() throws Exception {
     assertEquals(newStandardCalc.infixtoRpn("( 5 + 6 ) + ( 7 * 4 )"), "5 6 + 7 4 * +");
   }
+  
+  @Test
+  void testevaluate() throws Exception {
+    String expression = newStandardCalc.infixtoRpn("( 5 + 6 ) + ( 7 * 4 )");
+    assertEquals(newStandardCalc.evaluate(expression), 39);
+  }
 
 }

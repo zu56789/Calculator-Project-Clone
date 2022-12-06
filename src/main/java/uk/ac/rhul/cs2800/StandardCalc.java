@@ -88,8 +88,7 @@ public class StandardCalc implements Calculator {
   
   @Override
   public float evaluate(String expression) throws Exception {
-    // TODO Auto-generated method stub
-    return 0;
+    return rpnCalc.evaluate(expression);
   }
 
 }
