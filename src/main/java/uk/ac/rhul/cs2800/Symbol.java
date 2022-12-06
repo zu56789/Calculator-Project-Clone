@@ -29,11 +29,7 @@ public enum Symbol {
   /**
    * represents a "-" symbol.
    */
-  MINUS,
-  /**
-   * represents any other type of symbol.
-   */
-  INVALID;
+  MINUS;
   
   /**
    * this method returns the name of the symbol.

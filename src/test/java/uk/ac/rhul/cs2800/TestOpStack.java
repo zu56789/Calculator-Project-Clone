@@ -54,7 +54,7 @@ class TestOpStack {
   
   @Test
   void testPushPopandTop() throws Exception {
-    newOpStack.push(Symbol.INVALID);
+    newOpStack.push(Symbol.DIVIDE);
     newOpStack.pop();
     assertThrows(EmptyStackException.class, () -> newOpStack.top(),
         "Calling top after pushing and popping should throw an EmptyStackException.");
