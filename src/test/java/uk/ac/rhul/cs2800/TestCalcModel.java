@@ -15,8 +15,13 @@ class TestCalcModel {
   }
   
   @Test
-  void testEvaluate() {
-    assertEquals(calcModel.evaluate("", false), 0);
+  void testEvaluate() throws Exception {
+    assertEquals(calcModel.evaluate("5 + 5", true), 10);
+  }
+  
+  @Test
+  void testEvaluate2() throws Exception {
+    assertEquals(calcModel.evaluate("5 6 +", false), 11);
   }
 
 }
