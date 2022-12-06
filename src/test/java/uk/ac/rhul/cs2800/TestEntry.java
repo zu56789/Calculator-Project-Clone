@@ -9,7 +9,6 @@ class TestEntry {
   private Entry floatentry;
   private Entry symbolentry;
   private Entry stringentry;
-  private Entry typeentry;
   
   
   @Test
@@ -30,17 +29,11 @@ class TestEntry {
     assertEquals("Hello", stringentry.getString(), "test a string entry to see it works");
   }
   
-  @Test
-  void testType() throws Exception {
-    Entry typeentry = new Entry(Type.NUMBER);
-    assertEquals(Type.NUMBER, typeentry.getType(), "test a type entry to see it works");
-  }
   
   @Test
   void testExceptions() {
     assertThrows(NullPointerException.class, () -> floatentry.getValue());
     assertThrows(NullPointerException.class, () -> symbolentry.getValue());
     assertThrows(NullPointerException.class, () -> stringentry.getValue());
-    assertThrows(NullPointerException.class, () -> typeentry.getValue());
   }
 }

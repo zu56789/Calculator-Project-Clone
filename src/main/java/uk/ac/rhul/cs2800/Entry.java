@@ -18,10 +18,7 @@ public class Entry {
    * string entry.
    */
   private String str;
-  /**
-   * type entry.
-   */
-  private Type type;
+  
   
   /**
    * constructor for a float entry.
@@ -50,26 +47,7 @@ public class Entry {
   public Entry(String string) {
     str = string;
   }
-  
-  /**
-   * constructor for type entry.
 
-   * @param type1 type value.
-   */
-  public Entry(Type type1) {
-    type = type1;
-  }
-  
-  /**
-   * this method returns the type of the entry object.
-
-   * @return returns the type of the entry.
- 
-   */
-  public Type getType() throws Exception {
-    return type;
-  }
-  
   /**
    * this method returns the string passed into entry.
 
