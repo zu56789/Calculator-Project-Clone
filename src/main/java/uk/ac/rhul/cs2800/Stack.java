@@ -11,13 +11,7 @@ import java.util.EmptyStackException;
  */
 public class Stack {
 
-  /**
-   * the size of the stack.
-   */
   private int size = 0;
-  /**
-   * The list representing the stack.
-   */
   private ArrayList<Entry> entries = new ArrayList<Entry>();
 
   /**

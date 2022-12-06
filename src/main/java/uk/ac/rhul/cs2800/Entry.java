@@ -6,19 +6,10 @@ package uk.ac.rhul.cs2800;
  * @author Zuhayr
  */
 public class Entry {
-  /**
-   * float entry.
-   */
+
   private float number;
-  /**
-   * symbol entry.
-   */
   private Symbol other;
-  /**
-   * string entry.
-   */
   private String str;
-  
   
   /**
    * constructor for a float entry.
