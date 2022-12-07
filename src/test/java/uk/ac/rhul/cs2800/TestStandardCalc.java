@@ -75,6 +75,13 @@ class TestStandardCalc {
         "Tests that an infix expression is successfully evaluated.");
   }
   
+  @Test
+  void testrpninput() throws Exception {
+    assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("8 7 *"));
+  }
+  
+  
+  
  
 
 }
