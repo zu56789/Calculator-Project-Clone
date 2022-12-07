@@ -40,9 +40,6 @@ public class StandardCalc implements Calculator {
    * @return returns the rpn expression of the infix expression.
    */
   public String infixtoRpn(String expression) throws Exception {
-     
-    String output = new String(""); 
-    int countdigits = 0; 
       
     bracketsMap.put(Symbol.LEFT_BRACKET, "(");
     bracketsMap.put(Symbol.RIGHT_BRACKET, ")");
@@ -57,6 +54,27 @@ public class StandardCalc implements Calculator {
     revoperatorMap.put("*", Symbol.TIMES);
     revoperatorMap.put("/", Symbol.DIVIDE);
     
+    String output = new String(""); 
+    String tempexpression = expression.replaceAll("\\s", "");
+    
+    if (expression.length() < 3) {
+      throw new IllegalArgumentException("Invalid Expression");
+    }
+    
+    boolean islastdigitNum = String.valueOf(
+        tempexpression.charAt(tempexpression.length() - 1)).matches("^[0-9]*$");
+    
+    boolean is2ndlastop = operatorMap.containsValue(
+        String.valueOf(tempexpression.charAt(tempexpression.length() - 2)));
+    boolean islastbracket = bracketsMap.containsValue(
+        String.valueOf(tempexpression.charAt(tempexpression.length() - 1)));
+    
+    boolean isnobracketsinfix = islastdigitNum && is2ndlastop;
+    
+    if (!(isnobracketsinfix) && !(islastbracket)) {
+      throw new IllegalArgumentException("Invalid Expression");
+    }
+
     Scanner scan = new Scanner(expression); // reads contents of the expression.
     
     while (scan.hasNext()) {
@@ -67,7 +85,6 @@ public class StandardCalc implements Calculator {
         // if the string value is a number, add the value to the output string.
         if (value.matches("^[0-9]*$")) {
           output = output + " " + value;
-          countdigits++;
         }   else if (bracketsMap.containsValue(value)) {
           //if the string value is a left bracket, push the associated symbol to a stack.
           if (value.equals(bracketsMap.get(Symbol.LEFT_BRACKET))) {
@@ -76,7 +93,6 @@ public class StandardCalc implements Calculator {
             // right brackets are not added to the stack.
             while (!values.isEmpty() && values.top() != Symbol.LEFT_BRACKET) {
               output = output + " " + operatorMap.get(values.pop());
-              countdigits++;
             }
             bracketsMap.get(values.pop());
           }
@@ -85,7 +101,6 @@ public class StandardCalc implements Calculator {
           while (!values.isEmpty() && values.top() != Symbol.LEFT_BRACKET 
               &&  getPrecedence(value) <= getPrecedence(operatorMap.get(values.top()))) {
             output = output + " " +  operatorMap.get(values.pop());
-            countdigits++; 
           }
           //in order to push a symbol object, I had to create and use a reverse operator map.
           values.push(revoperatorMap.get(value));
@@ -101,13 +116,8 @@ public class StandardCalc implements Calculator {
         throw new IllegalArgumentException("Invalid Expression");
       }
       output = output + " " + operatorMap.get(values.pop());
-      countdigits++;
     }
     
-    //an output with less than 2 values is not valid.
-    if (countdigits <= 2) {
-      throw new IllegalArgumentException("Invalid Expression");
-    }
     scan.close();
     //whitespace removed from output string.
     return output.trim();
