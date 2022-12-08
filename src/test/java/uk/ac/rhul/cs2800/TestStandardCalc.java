@@ -30,7 +30,7 @@ class TestStandardCalc {
   @Test
   void testInvalidExpression3() {
     assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("5fg5"), 
-        "Tests that any non bracket, non number or non operator throws an expression");
+        "Tests that any non bracket, non number or non operator throws an exception");
   }
   
   
@@ -78,6 +78,13 @@ class TestStandardCalc {
   @Test
   void testrpninput() throws Exception {
     assertThrows(IllegalArgumentException.class, () -> newStandardCalc.infixtoRpn("8 7 *"));
+  }
+  
+  @Test
+  void testoutput5() throws Exception {
+    String expression = newStandardCalc.infixtoRpn("5 + 555");
+    assertEquals(newStandardCalc.evaluate(expression), 560);
+    
   }
   
   

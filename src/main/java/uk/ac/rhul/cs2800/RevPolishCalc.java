@@ -14,6 +14,7 @@ public class RevPolishCalc implements Calculator {
   private NumStack values = new NumStack();
   private HashMap<Symbol, String> operatorMap = new HashMap<Symbol, String>();
   //Hashmap is used so I can implement the Symbol enum and assign each a value.
+  private int opCount = 0;
 
   /**
    * this method calculates the solution to the rpn expression passed in to it.
@@ -38,28 +39,39 @@ public class RevPolishCalc implements Calculator {
         if (values.size() < 2) {
           throw new IllegalArgumentException("Invalid Expression");
         }
+        
+        opCount++;
+        float a = values.pop();
+        float b = values.pop();
+        
+        
+        
+        if (value.equals(operatorMap.get(Symbol.PLUS))) {
+          values.push(a + b); 
+        } else if (value.equals(operatorMap.get(Symbol.MINUS))) {
+          values.push(b - a);
+        } else if (value.equals(operatorMap.get(Symbol.TIMES))) {
+          values.push(a * b);
+        } else if (value.equals(operatorMap.get(Symbol.DIVIDE))) {
+          //do not want division by zero to generate infinity.
+          if (a == 0 || b == 0) {
+            throw new ArithmeticException("Cannot Divide by 0");
+          }
+          values.push(b / a);
+          
+        }
+                
       } else { // anything other than an operator/number is invalid.
         throw new IllegalArgumentException("Invalid Expression"); 
       }
-      
-      float a = values.pop();
-      float b = values.pop();
-      
-      if (value.equals(operatorMap.get(Symbol.PLUS))) {
-        values.push(a + b); 
-      } else if (value.equals(operatorMap.get(Symbol.MINUS))) {
-        values.push(b - a);
-      } else if (value.equals(operatorMap.get(Symbol.TIMES))) {
-        values.push(a * b);
-      } else if (value.equals(operatorMap.get(Symbol.DIVIDE))) {
-        //do not want division by zero to generate infinity.
-        if (a == 0 || b == 0) {
-          throw new ArithmeticException("Cannot Divide by 0");
-        }
-        values.push(b / a);
-      }
+            
     }
     scan.close();
+    
+    //if only numbers are given in the expression, throw exception.
+    if (opCount == 0) {
+      throw new IllegalArgumentException("Invalid Expression");
+    }
     return values.pop();
   }
 }
