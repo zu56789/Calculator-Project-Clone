@@ -1,3 +1,7 @@
+release 1.0
+6th Deceber 2022
+Infix and postfix can be evaluated.
+
 release 2.0
 6th December 2022
 CalcModel which can be used for infix or postfix expressions.
