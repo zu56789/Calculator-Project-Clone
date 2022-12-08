@@ -75,4 +75,10 @@ class TestRevPolishCalc {
         "Tests that diving by zero throws an exception");
   }
   
+  @Test
+  void testInvalidExpression6() throws Exception {
+    assertThrows(IllegalArgumentException.class, () -> rpnCalc.evaluate("5"));
+  }
+  
+  
 }

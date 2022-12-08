@@ -56,24 +56,30 @@ public class StandardCalc implements Calculator {
     
     String output = new String(""); 
     String tempexpression = expression.replaceAll("\\s", "");
+    String[] expressionArray = expression.trim().split(" ");
     
-    if (expression.length() < 3) {
+    //Expression with less than 3 values cannot be a legal expression.
+    if (expressionArray.length < 3) {
       throw new IllegalArgumentException("Invalid Expression");
     }
     
-    boolean islastdigitNum = String.valueOf(
-        tempexpression.charAt(tempexpression.length() - 1)).matches("^[0-9]*$");
-    
-    boolean is2ndlastop = operatorMap.containsValue(
-        String.valueOf(tempexpression.charAt(tempexpression.length() - 2)));
+    //checking if the expression contains a bracket at the end.
     boolean islastbracket = bracketsMap.containsValue(
         String.valueOf(tempexpression.charAt(tempexpression.length() - 1)));
     
-    boolean isnobracketsinfix = islastdigitNum && is2ndlastop;
+    boolean lastisnum = expressionArray[expressionArray.length - 1].matches("^[0-9]*$");
     
-    if (!(isnobracketsinfix) && !(islastbracket)) {
+    boolean secondlastisnum = expressionArray[expressionArray.length - 2].matches("^[0-9]*$");
+    
+    //inifx expressions only end in a number or a bracket.
+    if (!lastisnum &&  !islastbracket) {
+      throw new IllegalArgumentException("Invalid Expression");
+      //if the last value isnt a bracket then the second last value should be an operator.
+    }   else if  (lastisnum && secondlastisnum) {
       throw new IllegalArgumentException("Invalid Expression");
     }
+    
+    
 
     Scanner scan = new Scanner(expression); // reads contents of the expression.
     
